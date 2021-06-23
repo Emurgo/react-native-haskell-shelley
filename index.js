@@ -1788,6 +1788,26 @@ export class TransactionWitnessSet extends Ptr {
   }
 }
 
+export class ScriptPubkey extends Ptr {
+  /**
+  * @returns {Promise<Ed25519KeyHash>}
+  */
+  async addr_keyhash() {
+    const ret = await HaskellShelley.scriptPubkeyAddrKeyhash(this.ptr);
+    return Ptr._wrap(ret, Ed25519KeyHash);
+  }
+
+  /**
+  * @param {Ed25519KeyHash} addrKeyhash
+  * @returns {Promise<ScriptPubkey>}
+  */
+  static async new(addrKeyhash) {
+    const keyHashPtr = Ptr._assertClass(hash, Ed25519KeyHash);
+    const ret = await HaskellShelley.scriptPubkeyNew(keyHashPtr);
+    return Ptr._wrap(ret, ScriptPubkey);
+  }
+}
+
 export class TransactionBody extends Ptr {
   /**
   * @returns {Promise<Uint8Array>}

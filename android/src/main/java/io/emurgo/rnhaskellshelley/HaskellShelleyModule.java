@@ -1543,6 +1543,24 @@ public class HaskellShelleyModule extends ReactContextBaseJavaModule {
                 .pour(promise);
     }
 
+    // ScriptPubkey
+
+    @ReactMethod
+    public final void scriptPubkeyAddrKeyhash(String scriptPubkey, Promise promise) {
+        Native.I
+                .scriptPubkeyAddrKeyhash(new RPtr(scriptPubkey))
+                .map(RPtr::toJs)
+                .pour(promise);
+    }
+
+    @ReactMethod
+    public final void scriptPubkeyNew(String addrKeyhash, Promise promise) {
+        Native.I
+                .scriptPubkeyNew(new RPtr(addrKeyhash))
+                .map(RPtr::toJs)
+                .pour(promise);
+    }
+
     // TransactionBody
 
     @ReactMethod

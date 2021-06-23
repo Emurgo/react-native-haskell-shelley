@@ -1181,6 +1181,19 @@ export class TransactionWitnessSet extends Ptr {
   set_vkeys(vkeywitnesses: Vkeywitnesses): Promise<void>
 }
 
+export class ScriptPubkey extends Ptr {
+  /**
+  * @returns {Promise<Ed25519KeyHash>}
+  */
+  addr_keyhash(): Promise<Ed25519KeyHash>;
+
+  /**
+  * @param {Ed25519KeyHash} addrKeyhash
+  * @returns {Promise<ScriptPubkey>}
+  */
+  static new(addrKeyhash: Ed25519KeyHash): Promise<ScriptPubkey>;
+}
+
 export class TransactionBody extends Ptr {
   /**
   * @param {Uint8Array} bytes

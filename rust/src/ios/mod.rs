@@ -28,6 +28,7 @@ mod reward_address;
 mod reward_addresses;
 mod script_hash;
 mod script_hashes;
+mod script_pubkey;
 mod stake_credential;
 mod stake_delegation;
 mod stake_deregistration;
